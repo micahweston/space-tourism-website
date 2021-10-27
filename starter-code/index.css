@@ -14,7 +14,7 @@
   --fs-800: 3.5rem;
   --fs-700: 1.5rem;
   --fs-600: 1rem;
-  --fs-500: 1.75rem;
+  --fs-500: 1rem;
   --fs-400: 0.9375rem;
   --fs-300: 1rem;
   --fs-200: 0.875rem;
@@ -31,6 +31,7 @@
     --fs-800: 5rem;
     --fs-700: 2.5rem;
     --fs-600: 1.5rem;
+    --fs-500: 1.25rem;
     --fs-400: 1rem;
   }
 }
@@ -42,6 +43,7 @@
     --fs-800: 6.25rem;
     --fs-700: 3.5rem;
     --fs-600: 2rem;
+    --fs-500: 1.75rem;
     --fs-400: 1.125rem;
   }
 }
@@ -157,40 +159,6 @@ select {
   max-width: 80rem;
 }
 
-.grid-container {
-  display: grid;
-  place-items: center;
-  padding-inline: 1rem;
-  text-align: center;
-}
-
-.grid-container * {
-  max-width: 50ch;
-}
-
-@media (min-width: 45em) {
-  .grid-container {
-    column-gap: var(--container-gap, 2rem);
-    grid-template-columns: minmax(2em, 1fr) repeat(2, minmax(0, 40rem)) minmax(
-        2em,
-        1fr
-      );
-  }
-
-  .grid-container > *:first-child {
-    grid-column: 2;
-  }
-
-  .grid-container > *:last-child {
-    grid-column: 3;
-  }
-
-  .grid-container--home {
-    padding-bottom: max(6rem, 20vh);
-    align-items: end;
-  }
-}
-
 /* 
     screen-reader only this is something to add content that is hidden but able to be seen by screenreaders to give 
     contect to something that might not have text normally. 
@@ -225,7 +193,7 @@ select {
 
 .skip-to-content:hover {
   background: hsl(var(--clr-white));
-  color: hsl(var(--clr-dark)) ;
+  color: hsl(var(--clr-dark));
 }
 
 /* Colors */
@@ -449,7 +417,7 @@ select {
 
 @media (min-width: 45em) {
   .primary-header::after {
-    content: '';
+    content: "";
     display: block;
     position: relative;
     height: 1px;
@@ -465,6 +433,10 @@ select {
 
   .primary-navigation {
     margin-block: 2rem;
+  }
+
+  .large-button {
+    margin-left: 1.75em;
   }
 }
 
@@ -487,7 +459,7 @@ select {
 }
 
 .tab-list {
-  --gap: 2.5rem;
+  --gap: 2rem;
 }
 
 .dot-indicators > * {
@@ -542,10 +514,19 @@ body {
   background-image: url(./assets/home/background-home-mobile.jpg);
 }
 
+.destination {
+  background-image: url(./assets/destination/background-destination-mobile.jpg);
+}
+
 @media (min-width: 35em) {
   .home {
     background-position: center center;
     background-image: url(./assets/home/background-home-tablet.jpg);
+  }
+
+  .destination {
+    background-position: center center;
+    background-image: url(./assets/destination/background-destination-tablet.jpg);
   }
 }
 
@@ -553,4 +534,163 @@ body {
   .home {
     background-image: url(./assets/home/background-home-desktop.jpg);
   }
+
+  .destination {
+    background-image: url(./assets/destination/background-destination-desktop.jpg);
+  }
+}
+
+/* ----------------------------------------- */
+/* Layout                                    */
+/* ----------------------------------------- */
+
+.grid-container {
+  display: grid;
+  place-items: center;
+  padding-inline: 1rem;
+  text-align: center;
+  padding-bottom: 3rem;
+}
+
+.grid-container p:not([class]) {
+  max-width: 50ch;
+}
+
+.numbered-title {
+  grid-area: title;
+}
+
+/* Destination Layout */
+
+.grid-container--destination {
+  --flow-space: 2rem;
+  grid-template-areas:
+    "title"
+    "image"
+    "tabs"
+    "content";
+}
+
+.grid-container--destination > img {
+  grid-area: image;
+  max-width: 60%;
+}
+
+.grid-container--destination > .tab-list {
+  grid-area: tabs;
+}
+
+.grid-container--destination > .destination-info {
+  grid-area: content;
+}
+
+.destination-meta {
+  flex-direction: column;
+  border-top: 1px solid hsl(var(--clr-white) / 0.1);
+  padding-top: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.destination-meta p {
+  font-size: 1.75rem;
+}
+
+/* Crew Layout */
+
+.grid-container--crew {
+  --flow-space: 2rem;
+  grid-template-areas:
+    "title"
+    "image"
+    "dots"
+    "content";
+}
+
+.grid-container--crew > img {
+  grid-area: image;
+  max-width: 60%;
+  border-bottom: 1px solid hsl(var(--clr-white) / 0.1);
+}
+
+.grid-container--crew > .dot-indicators {
+  grid-area: dots;
+}
+
+.grid-container--crew > .crew-details {
+  grid-area: content;
+}
+
+@media (min-width: 35em) {
+  .numbered-title {
+    justify-self: start;
+    margin-top: 2rem;
+  }
+
+  .destination-meta {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .grid-container--crew {
+    grid-template-areas: 
+        'title'
+        'content'
+        'dots'
+        'image';
+  }
+
+
+}
+
+@media (min-width: 45em) {
+  .grid-container {
+    text-align: left;
+    column-gap: var(--container-gap, 2rem);
+    grid-template-columns: minmax(2em, 1fr) repeat(2, minmax(0, 40rem)) minmax(
+        2em,
+        1fr
+      );
+  }
+
+  .grid-container--home {
+    padding-bottom: max(6rem, 20vh);
+    align-items: end;
+  }
+
+  .grid-container--home > *:first-child {
+    grid-column: 2;
+  }
+
+  .grid-container--home > *:last-child {
+    grid-column: 3;
+  }
+
+  .grid-container--destination {
+    justify-items: start;
+    align-content: start;
+    grid-template-areas:
+      ". title title ."
+      ". image tabs ."
+      ". image content .";
+  }
+
+  .grid-container--destination > img,
+  .grid-container--crew > img {
+    max-width: 90%;
+  }
+
+  .destination-meta {
+    --gap: min(6vw, 6rem);
+    justify-content: start;
+  }
+
+  .grid-container--crew {
+    justify-items: start;
+    align-content: start;
+    grid-template-areas: 
+        '. title title .'
+        '. content image .'
+        '. dots image .';
+  }
+
 }
