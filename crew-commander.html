@@ -22,7 +22,7 @@
     <title>Frontend Mentor | Space tourism website</title>
     <script src="index.js" defer></script>
   </head>
-  <body class="destination">
+  <body class="crew">
     <a class="skip-to-content" href="#main">Skip to content</a>
     <header class="primary-header flex">
       <div>
@@ -76,63 +76,32 @@
         </ul>
       </nav>
     </header>
+    <main id="main" class="grid-container grid-container--crew flow">
+      <h1 class="numbered-title"><span aria-hidden="true">02</span> Meet your crew</h1>
 
-    <main id="main" class="grid-container grid-container--destination flow">
-      <h1 class="numbered-title">
-        <span aria-hidden="true">01</span> Pick your destination
-      </h1>
-
-      <img src="./assets/destination/image-moon.png" alt="The moon" />
-
-    
-      <div class="tab-list underline-indicators flex">
-        <button
-          aria-selected="true"
-          class="bg-dark ff-sans-cond text-accent letter-spacing-2 uppercase"
-        >
-          Moon
-        </button>
-        <button
-          aria-selected="false"
-          class="bg-dark ff-sans-cond text-accent letter-spacing-2 uppercase"
-        >
-          Mars
-        </button>
-        <button
-          aria-selected="false"
-          class="bg-dark ff-sans-cond text-accent letter-spacing-2 uppercase"
-        >
-          Europa
-        </button>
-        <button
-          aria-selected="false"
-          class="bg-dark ff-sans-cond text-accent letter-spacing-2 uppercase"
-        >
-          Titan
-        </button>
+      <div class="dot-indicators flex">
+        <button aria-selected="true"><span class="sr-only">The Commander</span></button>
+        <button aria-selected="false"><span class="sr-only">The mission specialist</span></button>
+        <button aria-selected="false"><span class="sr-only">The pilot</span></button>
+        <button aria-selected="false"><span class="sr-only">The crew engineer</span></button>
       </div>
 
-      <article class="destination-info">
-        <h2 class="ff-serif uppercase fs-800">Moon</h2>
-
-        <p>
-          See our planet as you’ve never seen it before. A perfect relaxing
-          trip away to help regain perspective and come back refreshed. While
-          you’re there, take in some history by visiting the Luna 2 and Apollo
-          11 landing sites.
+      <article class="crew-details flow">
+        <header class="flow flow-space--small">
+          <h2 class="fs-600 ff-serif uppercase">Commander</h2>
+          <p class="fs-700 uppercase ff-serif">Douglas Hurley</p>
+        </header>
+        <p class="text-accent">
+          Douglas Gerald Hurley is an American engineer, former Marine
+          Corps pilot and former NASA astronaut. He launched into space for the third
+          time as commander of Crew Dragon Demo-2.
         </p>
-
-        <div class="destination-meta flex">
-          <div>
-            <h3 class="text-accent uppercase fs-200 ">Avg. distance</h3>
-            <p class="uppercase ff-serif">384,400 km</p>
-          </div>
-          <div>
-            <h3 class="text-accent uppercase fs-200 ">Est. travel time</h3>
-            <p class="uppercase ff-serif">3 days</p>
-          </div>
-        </div>
       </article>
+
+      <picture>
+        <source srcset="assets/crew/image-douglas-hurley.webp" type="image/webp">
+        <img src="assets/crew/image-douglas-hurley.png" alt="Douglas Hurley">
+      </picture>
     </main>
   </body>
 </html>
